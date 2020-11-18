@@ -1,0 +1,142 @@
+
+<router-outlet></router-outlet>
+<div class="container" style="background-color:lightblue;">
+  <!--only displayed up until register button is clicked -->
+  <div class="container center"  *ngIf="show3">
+    <h1>Welcome to {{title}}!</h1>
+    <button type="button" (click)="toggle()" class="btn btn-primary btn-sm" >Login</button> 
+    
+ <button type="button" (click)="toggle2()" class="btn btn-primary btn-sm">Register</button> <br/> <br/>
+  </div>
+</div> 
+
+  
+  <!--div class="center" *ngIf="!show3">
+    <button type="button" (click)="toggle()" class="btn btn-primary btn-sm" >Login</button>
+  </div--> 
+
+
+<!-- login and registration buttons-->
+<div class=center>
+ 
+</div>
+
+  
+
+  <ng-container *ngIf="show">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Login</div> 
+          <div class="panel-body">
+
+          <!-- Login-->
+          
+          <form id="myForm1"  #myForm1 = "ngForm">
+            
+            <div class="form-group">
+              <label for="account_name1">Account Name</label>
+              <input type="text" class="form-control" id="account_name1" name="account_name1" placeholder="Enter Account Name" 
+              [(ngModel)]="account_name1" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email_1">Email</label>
+              <input type="text" class="form-control" id="email_1" name="email_1" placeholder="Enter Registered Email" 
+              [(ngModel)]="email_1" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="password1">Password</label>
+              <input type="password" id="password1" name="password1" placeholder="Enter Password" class="form-control" [(ngModel)]="password1" required>
+            </div> 
+
+
+
+            
+
+
+              <input type="reset" class="btn btn-primary" value="Clear" > 
+              
+              <input type="button" class="btn btn-primary" value="Login" (click)="onSubmit(account_name1, email_1, password1)">
+            
+
+          </form> 
+
+               <input type="button" class="btn btn-primary" value="Login with Facebook" (click)="loginWithFacebook()">
+        </div> 
+
+
+
+  </div>
+    
+  </ng-container>  
+
+  <ng-container *ngIf="show2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Register</div> 
+          <div class="panel-body">
+
+          <!-- Register-->
+          
+        </div> 
+        <!-- (ngSubmit)="onRegister(myForm.valid)" #myForm = "ngForm"-->
+   <form id="myForm"  >
+
+            <div class="form-group">
+              <label for="account_name">Account Name</label>
+              <input type="text" class="form-control" id="account_name" name= "account_name" [(ngModel)]="account_name" placeholder="Account Name" required>
+              <!--div id="account_name_wrong" class="alert alert-danger">
+                <strong>Account Name is Required. </strong>   Account Name </label>
+             </div-->
+             <div id="account_name_wrong" class="alert alert-danger hidden">
+               <strong>Account Name is Required. </strong> 
+             </div>
+           </div>
+      
+
+      
+            <!--div class="form-group">
+              <label for="net_id">Net Id</label>
+              <input type="text" class="form-control" id="net_id" name="net_id" [(ngModel)]="net_id" placeholder="Net Id" required>
+            </div-->
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" [(ngModel)]="email" class="form-control" id="email" name="email" aria-describedby="email_help" pattern="[A-Za-z0-9._%+-]+@[A-za-z-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter email" required >
+            <small id="email_help" class="form-text text-muted">Must be in form handle@domain.xxx</small>
+          </div>
+
+          <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number"  name="phone_number" [(ngModel)]="phone_number" aria-describedby="password_help" placeholder="Enter phone number" required pattern="[0-9]{3}[ -][0-9]{3}[ -][0-9]{4}" required>
+            <small id="password_help" class="form-text text-muted">Must be in form xxxxxxxxxx</small>
+          </div>
+
+          <div class="form-group">
+            <label for="birthdate">Date of Birth</label>
+            <input type="date" class="form-control" id="birthdate" name= "birthdate" [(ngModel)]="birthdate" aria-describedby="birthdate_help" placeholder="Enter birthdate" required>
+            <small id="birthdate_help" class="form-text text-muted">Must be at least 18 years of age</small>
+          </div> 
+
+          <div class="form-group">
+            <label for="zip_code">Zip Code</label>
+            <input type="text" class="form-control" id="zip_code" name = zip_code [(ngModel)]="zip_code" required pattern="[0-9]{5}" placeholder="Zip Code" required>
+          </div>    
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"  placeholder="Enter Password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" [(ngModel)]="password_confirmation" aria-describedby="password_confirmation_help" placeholder="Re-enter password" required>
+            <small id="password_confirmation_help" class="form-text text-muted">Please ensure that password and password confirmation match</small>
+          </div>
+
+          <input type="reset" class="btn btn-primary" value="Clear" > 
+          <input type="button" class="btn btn-primary" value="Register" (click)="onRegister(account_name,password)">
+      </form>
+
+  </div>
+    
+  </ng-container>  

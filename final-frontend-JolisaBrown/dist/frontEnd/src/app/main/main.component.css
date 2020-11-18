@@ -1,0 +1,58 @@
+
+
+
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: 400px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.thead-dark{
+  background-color: black;
+
+}
+
+.sidenav {
+    width: 170px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 13px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+#navigation
+{
+    background-color: #0F2F56 ; 
+    height:100%;
+    color: white;
+    float:left;
+    
+    z-index:1;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

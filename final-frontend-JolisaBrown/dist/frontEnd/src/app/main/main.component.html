@@ -1,0 +1,234 @@
+
+   
+<router-outlet></router-outlet>
+    
+<div class="container">
+<div class="row">
+<h1 class="text-center"> Your {{title}}</h1>
+<!--All of the content above the table -->
+
+<div name= "profile/avatar" class="text-right" >
+  
+  <h6> Hey Jojo</h6>
+  <p id="myStatus"> Status: {{status}}</p>
+<!-- Button to update status-->
+
+  <div class="row">	
+  
+    <img id="img1" src= "assets/jojo.png" alt="Jojo" style="width:60px;height:80px;">	
+    <a routerLink="/app" (click) = "logout()">Logout </a>
+    <a routerLink="/profile"> Profile </a>
+    
+  </div>
+
+  <button type="button" (click)="atoggle()" class="btn btn-primary btn-sm">Update Status</button> <br/> <br/>
+
+  
+
+  <ng-container *ngIf="show">
+    <!-- Changing your status-->
+      <button id= "myStatus" type="button" (click)="changeStatus(textarea.value)" class="btn btn-primary btn-sm">Update </button>
+
+      <textarea #textarea rows="2" [(ngModel)]="newStatus" name="aStatus" type="text"></textarea>
+
+    <!--input #textbox type="text" [(ngModel)]="status" required-->
+
+    
+  </ng-container>
+  <hr>
+</div>
+</div>
+</div>
+<!-- This is my sidebar, I put it all in a container split between the sidebar and the main section-->
+
+<div class="container">
+<div name="sidebar" class="sidenav" id="navigation">	
+
+  <h3>My Followers</h3>  
+ 
+ <button type="button" (click)="toggle2()" class="btn btn-primary btn-sm">Add Follower</button> <br/> <br/>
+ <button type="button" (click)="toggle4()" class="btn btn-primary btn-sm">Remove Follower</button> <br/> <br/>
+ 
+  <ng-container *ngIf="show2">
+    <!-- Describing the follower you want to add-->
+
+      <form id="myForm2" #myForm2 = "ngForm">
+            <div class="form-group">
+              <label for="follower_name">Follower Name:</label>
+              <input class= "follower_name" type="text" class="form-control" id="follower_name" name="follower_name"  
+              [(ngModel)]="follower_name" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="follower_status"> Follower Email: </label>
+              <input type="text" class="form-control" id="follower_email" name="follower_email"  
+              [(ngModel)]="follower_email" required>
+            </div>
+      <button type="button" (click)="addFollower(follower_name,follower_email)" class="btn btn-primary btn-sm">Post Follower </button>     
+
+          </form> 
+
+  </ng-container>
+
+
+  <ng-container *ngIf="show4">
+    <!-- Describing the follower you want to add-->
+
+      <form id="myForm4" #myForm4 = "ngForm">
+            <div class="form-group">
+              <label for="follower_name2">Follower Name:</label>
+              <input class= "follower_name2" type="text" class="form-control" id="follower_name2" name="follower_name2"  
+              [(ngModel)]="follower_name2" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="follower_status2"> Follower Email: </label>
+              <input type="text" class="form-control" id="follower_email2" name="follower_email2"  
+              [(ngModel)]="follower_email2" required>
+            </div>
+      <button type="button" (click)="removeFriend(follower_name2,follower_email2)" class="btn btn-primary btn-sm">Remove </button>     
+
+          </form> 
+
+  </ng-container>
+
+
+
+
+
+
+  <div class="followers">
+   <div *ngFor="let follower of theFollowers">
+    <div *ngIf='mainService.isDefined(follower)'>
+    <p> {{follower.username}} </p>
+    <p><img id="img1" src= {{follower.avatar}} alt="
+      jojo" style="float:left;width:70px;height:80px;"> Status: {{follower.headline}}  </p><br><br><br>
+    </div>  
+   </div>
+    <!--span class="followerName">{follower.name}}</span> {{follower.avatar}}{{follower.status}}
+  </li-->
+ </div>
+
+<!--ul class="followers">
+  <li *ngFor="let follower of theFollowers">
+    <span class="friends">{{follower.name}}</span> {{follower.avatar}}{{follower.status}}
+  </li>
+</ul-->
+
+  
+</div>
+
+<!-- You can do the search bar here-->
+<!--div class = "center"
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for article by author or title.." title="Type in a name">
+</div-->
+
+<div class="center">
+  <input class="searchParameters" class="form-control" rows="1" id="searchParameters" [(ngModel)]="searchParameters" name="searchParameters" type="text" placeholder="Search by author or title..." (change)="searching(searchParameters)">
+
+
+
+</div>
+
+
+
+<!-- This is the div where all the non-sidebar content goes-->
+
+
+
+<div name="main content" class="main">
+
+
+  <div class="table-wrapper-scroll-y">
+
+  <table class="table table-bordered table-striped"  >
+    <thead class="thead-dark">
+      <tr>
+        <th>
+          Recent News <button id= "some_comments" class= "center-right" type="button" (click)="commentViewing()" class="btn btn-primary btn-sm">View Article Comments</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Inserting new table entries as users create them-->
+      <!--tr *ngFor="let row of rows">
+      <td>{{row.newPost}}</td>     
+      </tr--> 
+
+        <!-- on-mouseover='filterArticle(article)'-->
+      <div *ngFor="let article of theArticles" >
+      <!--div *ngIf='filterArticle(article)'-->
+      <div *ngIf='filterArticle(article)'>
+      <tr >
+      <td>{{article.body}} 
+        <div *ngIf='mainService.hasImage(article)'>
+        <img id="img2" src= {{article.picture}} style="float:right;width:80px;height:80px;">
+         </div>
+
+        <br>{{article.author}} <br>{{article.date}} <br><br>
+
+      <button type="button" class="btn btn-primary btn-sm">Comment</button>
+      <button type="button" class="btn btn-primary btn-sm">Edit</button><br><br>
+
+      
+      <br><br>
+
+      <div *ngIf='show3'>
+        Comments: <br>
+        <strong>{{article.comments.author}}</strong>
+        {{article.comments.body}}
+        {{article.comments.date}}
+        <br><br>
+      </div>  
+
+
+      </td>     
+      </tr>
+      
+
+      </div>
+      </div>
+
+    </tbody>
+  </table>
+ </div> 
+
+
+
+
+
+<!-- finiwh here-->
+
+<div class="container">
+  <h2>Create New Post: </h2>
+  <form id="myForm2" (ngSubmit)="makePost(myForm2.valid)" #myForm2 = "ngForm">
+    <div class="form-group">
+      <label for="Post">Post:</label>
+      <textarea class="form-control" rows="3" id="newPost" [(ngModel)]="newPost" name="aPost" type="text"></textarea>
+    </div>
+
+    <div class="form-group">
+      <input id="postPicture" type="file" accept= "image/*" (change)="onFileChanged($event)">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm">Post</button>
+    <button type="reset" class="btn btn-primary btn-sm">Clear</button>
+    
+    <!-- This guy currently does nothing-->
+
+   </form>
+</div>
+</div>
+<!-- This is the div for the entire sidebar and main content bar-->
+</div>
+
+
+
+
+
+
+
+
+
+
+

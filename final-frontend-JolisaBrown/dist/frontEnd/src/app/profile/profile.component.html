@@ -1,0 +1,156 @@
+
+<router-outlet></router-outlet>
+
+<div class="row" class="float-left">	
+    <h6>     Jojo</h6>
+
+    <img id="img1" src= "assets/jojo.png" alt="Jojo" style="width:60px;height:80px;">	
+    
+  </div>
+
+<a routerLink="/main">Return to Main Page</a>
+<a routerLink="/app" (click) = "logout()">Logout </a>
+
+<div class="center">
+
+<h1> Registration Info: </h1> <br><br>
+
+<button type="button" (click)="toggle()" class="btn btn-primary btn-sm center">Update Registration Details </button>
+
+<h5>
+  
+
+  <!--Account name: {{Account_name}}   
+  
+  <ng-container *ngIf="show">
+    
+      <br> <br>
+
+      <textarea [(ngModel)]="account_name" #textarea rows="1" class="form-control"  name="account_update" type="text"></textarea> <br>
+
+      <button type="button" (click)="Update(textarea.value,0)" class="btn btn-primary btn-sm">Submit </button>
+    
+  </ng-container><br><br>
+  
+
+
+  
+  Net Id: {{Net_id}} 
+    
+    <ng-container *ngIf="show">
+    
+      <br> <br>
+      <textarea class="form-control" #textarea rows="1" name="display_update" type="text"></textarea>  <br>
+    
+       <button type="button" (click)="Update(textarea.value,1)" class="btn btn-primary btn-sm">Submit </button>
+    </ng-container> <br><br>-->
+
+  
+  Email: {{Email}}  
+    
+    <ng-container *ngIf="show">
+    <!-- Changing your email handle value-->
+<br> <br>
+      <textarea class = "form-control" #textarea rows="1"  name="display_update" type="text"></textarea> <br> 
+      
+      <button type="button" (click)="Update(textarea.value,2)" class="btn btn-primary btn-sm">Update </button>
+    </ng-container> <br><br>
+  
+
+  <!--
+  Phone number:  {{Phone_number}} 
+    
+    <ng-container *ngIf="show">
+    
+      <br> <br>
+
+      <textarea class="form-control" #textarea rows="1" name="display_update" type="text"></textarea> <br> 
+
+      <button type="button" (click)="Update(textarea.value,3)" class="btn btn-primary btn-sm">Submit </button>
+    
+    </ng-container> <br><br>-->
+  
+  Birthdate:  {{Birthdate}} 
+
+  <br><br>
+  
+ 
+  Zipcode: {{Zipcode}} 
+    
+    <ng-container *ngIf="show">
+    <!-- Changing your account name value-->
+     
+      <br> <br>
+      <textarea class="form-control" #textarea rows="1"  name="display_update" type="text"></textarea> <br> 
+
+      <button type="button" (click)="Update(textarea.value,5)" class="btn btn-primary btn-sm">Submit </button>
+    
+     </ng-container> <br><br>
+  
+  
+  Password: {{Password}} 
+    
+    <ng-container *ngIf="show">
+    <!-- Changing your account name value-->
+       <br> <br>
+       <textarea  class="form-control" #textarea rows="1" name="display_update" type="text"></textarea> <br> 
+
+       <button type="button" (click)="Update(textarea.value,6)" class="btn btn-primary btn-sm">Submit </button>
+
+      
+    
+    </ng-container> <br><br>
+  
+  
+  <!--Password confirmation: {{Password_confirmation}} 
+     
+     <ng-container *ngIf="show">
+    
+       <br> <br>
+
+        <textarea class="form-control" #textarea rows="1"  name="display_update" type="text"></textarea> <br>
+
+         
+         <button type="button" (click)="Update(textarea.value,7)" class="btn btn-primary btn-sm">Submit </button><br><br>
+     </ng-container> -->
+
+
+
+</h5>
+     <button type="button" (click)="toggle2()" class=" btn btn-primary btn-sm center">Select New Profile Image </button>
+
+
+<ng-container *ngIf="show2">
+    <!-- Changing your account name value-->
+       <br> <br>
+  <div class="form-group">
+      <input type="file" (change)="onFileChanged($event)">
+    </div>
+</ng-container> <br><br>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--label for="typeahead-basic">Search for article by author:</label>-->
+
+<!--input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model"-->
+
+<!--input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" 
+(change)="search"/>
+<hr>
+<h5>Author: {{ model | json }}</h5-->
+
+
+
+
+
